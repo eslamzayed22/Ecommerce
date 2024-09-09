@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container">
+        <a class="navbar-brand" routerLink="home">
+            <div class="d-flex align-items-center justify-content-center">
+                <i class="fa-solid fa-cart-shopping nav-icon fs-2 cart-color"></i>
+                <span class="h3 fw-bold">Fresh Cart</span>
+            </div>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarNav" aria-controls="navbarNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto fw-semibold">
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active-link" routerLink="home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active-link" routerLink="cart">cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active-link" routerLink="wishlist">wishlist</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active-link" routerLink="products">products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active-link" routerLink="categories">categories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active-link" routerLink="brands">brands</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link position-relative" routerLink="cart">
+                        <i _ngcontent-pqd-c20="" class="fa-solid fa-cart-shopping fs-3"></i> 
+                        <span class="badge bg-main position-absolute top-0 end-0">{{countNumber}}</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link cr" (click)="_AuthService.logout()">log out</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

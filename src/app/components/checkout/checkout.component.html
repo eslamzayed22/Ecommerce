@@ -1,0 +1,13 @@
+<section>
+    <div class="container my-5">
+        <form [formGroup]="checkout" (ngSubmit)="ordersSubmit()">
+            <label  for="details">Details</label>
+            <input  type="text" id="details" formControlName="details" class="form-control mb-3">
+            <label  for="phone">phone</label>
+            <input  type="tel" id="phone" formControlName="phone" class="form-control mb-3">
+            <label  for="city">city</label>
+            <input  type="text" id="city" formControlName="city" class="form-control mb-3">
+            <button type="submit"  class="btn btn-outline-info w-100 my-5" >Pay now</button>
+        </form>
+    </div>
+</section>

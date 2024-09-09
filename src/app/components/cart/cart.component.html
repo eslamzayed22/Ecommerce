@@ -1,0 +1,38 @@
+<section>
+    <div class="container my-5 py-5">
+        <div class="d-flex justify-content-between mb-4">
+            <h2 class="fw-semibold">Cart Shop</h2>
+            <button [routerLink]="['/checkout', cartDetails._id]" class="btn btn-primary p-1 btn-lg ">
+                check out
+            </button>
+        </div>
+        <div class="d-flex justify-content-between align-items-center ">
+            <h5>total price: <span class="text-main">{{cartDetails.totalCartPrice}} EGP</span> </h5>
+            <h5>total number of items: 
+                <span class="text-main"> </span>
+            </h5>
+        </div>
+        @for (item of cartDetails.products; track item.product.id) {
+            <div class="row border-bottom d-flex align-items-center  my-3 p-2">
+                <div class="col-md-2">
+                    <img alt="" class="w-100" [src]="item.product.imageCover">
+                </div>
+                <div class="col-md-10 d-flex justify-content-between">
+                    <div>
+                        <h5 class="fw-semibold">{{item.product.title}}</h5>
+                        <h6>{{item.price}} EGP</h6>
+                        <button (click)="removeItem(item.product.id)" class="btn btn-sm m-0 p-0 text-danger" >
+                            <i class="fa fa-trash"></i>Remove
+                        </button>
+                    </div>
+                    <div>
+                        <button (click)="updateCount(item.product.id , item.count + 1)" class="btn border-green">+</button>
+                        <span class="mx-3">{{item.count}}</span>
+                        <button (click)="updateCount(item.product.id , item.count -  1)" class="btn border-green">-</button>
+                    </div>
+                </div>
+            </div>
+        }
+        <button (click)="clearYourCart()" class="btn btn-lg d-block mx-auto border-green ">Clear Your Cart</button>
+    </div>
+</section>
