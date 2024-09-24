@@ -57,6 +57,12 @@ a:hover {
 .product:hover .btn-main {
   transform: translateY(0%);
 }
+
+@media (max-width: 640px  ) {
+  .product .btn-main {
+    transform: translateY(0%);
+  }
+}
 .font-sm {
   font-size: 12px;
 }
@@ -87,6 +93,7 @@ a:hover {
 }
 .btn-main:hover {
   background-color: #11bd11;
+  color: #fff;
 }
 .gold {
   color: #daa520;
@@ -98,6 +105,18 @@ a:hover {
 .border-green {
   border: 1px solid var(--main-color);
 }
+.border-green:hover {
+  background-color:  var(--main-color);
+  color: #fff;
+}
+.wish {
+  color: white ;
+}
 .wish-active{
-  color: red;
+  color: var(--main-color);
+}
+@media (max-width: 640px  ) {
+  .img-res-mob {
+    height: 120px;
+  }
 }

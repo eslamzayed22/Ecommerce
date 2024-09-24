@@ -1,39 +1,35 @@
 <section class="my-5">
     <div class="container">
         <div class="row g-0 justify-content-center">
-            <div class="col-md-3">
+            <div class="col-md-12">
                 <owl-carousel-o [options]="customOptionsMain">
-                    <ng-template carouselSlide><img src="../../../assets/images/bag.jpg" alt="" height="400px" class="w-100"></ng-template>  
-                    <ng-template carouselSlide><img src="./assets/images/chair.jpg" alt="" height="400px" class="w-100"></ng-template>  
-                    <ng-template carouselSlide><img src="./assets/images/ring.jpg" alt="" height="400px" class="w-100"></ng-template>  
+                    <ng-template carouselSlide><img src="./assets/images/mobile.png" alt="" height="200px"  class="w-100 p-1 img-res-mob"></ng-template>  
+                    <ng-template carouselSlide><img src="./assets/images/drag.png" alt=""  height="200px" class="w-100 p-1 img-res-mob"></ng-template>  
+                    <ng-template carouselSlide><img src="./assets/images/tornado.png" alt=""  height="200px" class="w-100 p-1 img-res-mob"></ng-template>  
                 </owl-carousel-o>
-            </div>
-            <div class="col-md-3">
-                <div>
-                    <img src="./assets/images/bags.jpg" alt="" height="250px"  class="w-100">
-                <img src="./assets/images/music.jpg" alt="" height="250px"  class="w-100">
-                </div>
             </div>
         </div>
     </div>
 </section>
 <!-- categories -->
-<section class="my-5">
-    <owl-carousel-o [options]="customOptionsCat">
-        @for (category of categoryList; track category._id) {
-            <ng-template carouselSlide>
-                <div class="h">
-                    <img [src]="category.image" [alt]="category.name" height="300px" class="w-100">
-                    <h3 class="h4 fw-semibold text-center">{{category.name}}</h3>
-                </div>
-            </ng-template>
-        }
-    </owl-carousel-o>
+<section class="my-5  p-3">
+    <div class="">
+        <owl-carousel-o [options]="customOptionsCat">
+            @for (category of categoryList; track category._id) {
+                <ng-template carouselSlide>
+                    <div class="p-2">
+                        <img [src]="category.image" [alt]="category.name" height="250px" class="w-100 rounded-circle">
+                        <h3 class="h4 fw-semibold text-center">{{category.name}}</h3>
+                    </div>
+                </ng-template>
+            }
+        </owl-carousel-o>
+    </div>
 </section>
 <!-- products -->
 <section>
     <div class="container mb-5 pb-5">
-        <input [(ngModel)]="text" type="text" placeholder="search...."
+        <input [(ngModel)]="text" type="text" placeholder="Search products, brands and categories"
             class="w-75 mx-auto form-control my-5 ng-untouched ng-pristine ng-valid">
         <div class="row g-3">
             @for (product of productsList | search: text ; track product.id) {
@@ -42,26 +38,27 @@
                     <div class="cr" [routerLink]=" ['/details' , product.id ] ">
                         <img [src]="product.imageCover" [alt]="product.title"
                         class="w-100">
-                        <p class="text-main">{{product.category.name}}</p>
-                        <h2 class="small fw-semibold">{{product.title.split(" ",
-                            2).join(" ")}}</h2>
+                        <p class="text-main text-center">{{product.category.name}}</p>
                         <div class="d-flex justify-content-between align-items-center">
-                            <span>{{product.price}} EGP</span>
-                            <div class="d-flex align-items-center">
-                                <i class="fa fa-star gold me-1"></i>
-                                <span>2</span>
+                            <h2 class="small fw-semibold">{{product.title.split(" ",2).join(" ")}}</h2>
+                            <div class="rate d-flex align-items-center">
+                                <i class="fa fa-star text-warning me-1"></i>
+                                <span> {{product.ratingsAverage}} </span>
                             </div>
                         </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span>{{product.price}} EGP</span>
+                        @if (!wishlistData.includes(product.id)) {
+                            <i (click)="addToWishlist(product.id)" class="fa-solid fa-heart fs-2 me-1 mb-0 cr text-body-tertiary"></i>
+                        }
+                        @if (wishlistData.includes(product.id)) {
+                            <i (click)="removeFromWishlist(product.id)" class="fa-solid fa-heart fs-2 me-1 mb-0 cr wish-active overflow-hidden"></i>
+                        }    
                     </div>
                     <div
                         class="d-flex align-items-center justify-content-center mt-1">
                         <button class="btn-main w-75 p-1" (click)="addToCart(product.id)">+ Add</button>
-                        @if (!wishlistData.includes(product.id)) {
-                            <i (click)="addToWishlist(product.id)" class="fa-solid fa-heart fs-2 ms-2 mb-0 cr"></i>
-                        }
-                        @if (wishlistData.includes(product.id)) {
-                            <i (click)="removeFromWishlist(product.id)" class="fa-solid fa-heart fs-2 ms-2 mb-0 cr wish-active overflow-hidden"></i>
-                        }
                     </div>
                 </div>
             </div>

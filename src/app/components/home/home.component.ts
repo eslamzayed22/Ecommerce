@@ -36,14 +36,29 @@ export class HomeComponent implements OnInit , OnDestroy{
   text : string = "";
 
   getAllProductSub !: Subscription
+  customOptionsMain: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: false,
+    autoplay: true,
+    autoplayTimeout: 2000,
+    autoplaySpeed: 1500,
+    autoplayHoverPause: true,
+    dots: false,
+    navSpeed: 100,
+    navText: ['', ''],
+    items:1,
+    nav: true
+  }
 
   customOptionsCat: OwlOptions = {
     loop: true,
-    mouseDrag: false,
-    touchDrag: false,
+    mouseDrag: true,
+    touchDrag: true,
     pullDrag: false,
     dots: false,
-    navSpeed: 700,
+    navSpeed: 1000,
     navText: ['', ''],
     responsive: {
       0: {
@@ -59,17 +74,6 @@ export class HomeComponent implements OnInit , OnDestroy{
         items: 6
       }
     },
-    nav: true
-  }
-  customOptionsMain: OwlOptions = {
-    loop: true,
-    mouseDrag: true,
-    touchDrag: false,
-    pullDrag: false,
-    dots: false,
-    navSpeed: 700,
-    navText: ['', ''],
-    items:1,
     nav: true
   }
 
