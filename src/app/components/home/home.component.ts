@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit , OnDestroy{
     navSpeed: 100,
     navText: ['', ''],
     items:1,
-    nav: true
+    nav: false,
   }
 
   customOptionsCat: OwlOptions = {
